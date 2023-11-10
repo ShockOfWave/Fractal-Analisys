@@ -77,16 +77,16 @@ extern "C"{
 		    std::vector<double> increases;
 		    binarize(std::move(matrix), image, thresh, pressure); 
 		    
-		    box_counts = boxCounting(std::move(regression), std::move(matrix), &holes_num);
+		    logN = boxCounting(std::move(regression), std::move(matrix), &holes_num);
 		        
 		    slide_box_counting(std::move(regression), std::move(matrix), std::move(half_regressions), std::move(lambdas),std::move(exp_half_regressions),std::move(exp_lambdas));
 		    
 
-		    logFrom(box_counts, std::move(logN));
+		    //logFrom(box_counts, std::move(logN));
 
 		    calc_Increase(std::move(increases), std::move(regression));
 
-		    derivative = calc_derivative(increases, logN);
+		    derivative = calcDerivative(increases, logN);
 		    //std::cout << der << "\n";
 
 		    int currentMarker = 2; // Начинаем с маркера 2 (1 уже занят)

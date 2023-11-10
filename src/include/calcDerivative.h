@@ -2,7 +2,8 @@
 #define CALC_DERIVATIVE_H
 
 #include <vector>
+#include "gsl/gsl_fit.h"
 
-double calc_derivative(std::vector<double> x, std::vector<double> y);
+double calcDerivative(std::vector<double> x, std::vector<double> y);
 
 #endif

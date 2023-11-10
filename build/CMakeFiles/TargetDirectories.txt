@@ -1,3 +1,0 @@
-/home/vladislav/Fractal-Analisys/build/CMakeFiles/lacunarity.dir
-/home/vladislav/Fractal-Analisys/build/CMakeFiles/edit_cache.dir
-/home/vladislav/Fractal-Analisys/build/CMakeFiles/rebuild_cache.dir

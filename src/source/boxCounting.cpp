@@ -1,10 +1,8 @@
 #include "boxCounting.h"
 
-#include <algorithm>
+std::vector<double> boxCounting(std::vector<int>&& regression, std::vector<std::vector<int>>&& matrix, double* holes_num) {
 
-std::map<int, int> boxCounting(std::vector<int>&& regression, std::vector<std::vector<int>>&& matrix, double* holes_num) {
-
-    std::map<int, int> counts;
+    std::vector<double> counts;
     std::sort(regression.begin(), regression.end());
     for (int k = 0; k < regression.size(); ++k) {
         int box_counter = 0;
@@ -34,7 +32,7 @@ std::map<int, int> boxCounting(std::vector<int>&& regression, std::vector<std::v
         /*if (k > 0) {
             counts[regression[k]] = box_counter - counts[regression[k - 1]];
         }*/
-        counts[regression[k]] = box_counter;
+        counts.push_back(log10(box_counter));
     }
     return counts;
 }
