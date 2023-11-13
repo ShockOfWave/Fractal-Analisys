@@ -5,6 +5,6 @@
 #include <algorithm>
 #include "Marks.h"
 
-Marks countUniqueMarkers(const std::vector<std::vector<int>>& matrix);
+Marks countUniqueMarkers(const std::vector<std::vector<int> >& matrix);
 
 #endif

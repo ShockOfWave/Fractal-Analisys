@@ -1,6 +1,6 @@
 #include "compute_square.h"
 
-void compute_square(std::vector<std::vector<int>> matrix, int* z_square, int* u_square) {
+void compute_square(std::vector<std::vector<int> > matrix, int* z_square, int* u_square) {
 
     for (int i = 0; i < matrix.size(); ++i) {
         for (int j = 0; j < matrix[i].size(); ++j) {

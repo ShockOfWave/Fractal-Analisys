@@ -3,6 +3,6 @@
 
 #include <vector>
 
-int findInnerOnes(std::vector<std::vector<int>>& matrix);
+int findInnerOnes(std::vector<std::vector<int> >& matrix);
 
 #endif

@@ -5,6 +5,6 @@
 #include <cmath>
 #include <vector>
 
-std::vector<double> boxCounting(std::vector<int>&& regression, std::vector<std::vector<int>>&& matrix, double* holes_num);
+std::vector<double> boxCounting(std::vector<int>&& regression, std::vector<std::vector<int> >&& matrix, double* holes_num);
 
 #endif

@@ -3,6 +3,6 @@
 
 #include <vector>
 
-int markInnerOnes(std::vector<std::vector<int>>& matrix, int* area_count);
+int markInnerOnes(std::vector<std::vector<int> >& matrix, int* area_count);
 
 #endif

@@ -4,6 +4,6 @@
 #include <vector>
 #include <string>
 
-void loadImg(std::vector<std::vector<double>>&& image, std::string path);
+void loadImg(std::vector<std::vector<double> >&& image, std::string path);
 
 #endif

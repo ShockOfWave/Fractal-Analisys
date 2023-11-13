@@ -1,6 +1,6 @@
 #include "binarize.h"
 
-void binarize(std::vector<std::vector<int>>&& bin_matrix, std::vector<std::vector<double>> image, double thresh, double pressure) {
+void binarize(std::vector<std::vector<int> >&& bin_matrix, std::vector<std::vector<double> > image, double thresh, double pressure) {
 
     for (int i = 0; i < image.size(); ++i) {
         std::vector<int> row;

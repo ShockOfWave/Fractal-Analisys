@@ -22,7 +22,7 @@ extern "C"{
 
 	Result lacunarity(double* array, size_t n, size_t p) {
 		clock_t start_time = clock();
-		std::vector<std::vector<double>> image;
+		std::vector<std::vector<double> > image;
 		
 		for (size_t i = 0; i < n; i++)
         {
@@ -70,7 +70,7 @@ extern "C"{
 		    int ex_ones = 0;
 		    int in_ones = 0;
 		    int z = 0;
-		    std::vector<std::vector<int>> matrix;
+		    std::vector<std::vector<int> > matrix;
 		    double derivative;
 		    std::map<int, int> box_counts;
 		    std::vector<double> logN;

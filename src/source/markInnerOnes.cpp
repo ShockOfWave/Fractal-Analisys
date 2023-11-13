@@ -1,7 +1,7 @@
 #include "markInnerOnes.h"
 #include "hasNumber.h"
 
-int markInnerOnes(std::vector<std::vector<int>>& matrix, int* area_count) {
+int markInnerOnes(std::vector<std::vector<int> >& matrix, int* area_count) {
     int count = 0;
     std::vector<int> visited;
     int width = matrix[0].size();

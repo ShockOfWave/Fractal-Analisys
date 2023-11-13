@@ -3,6 +3,6 @@
 
 #include <vector>
 
-void compute_square(std::vector<std::vector<int>> matrix, int* z_square, int* u_square);
+void compute_square(std::vector<std::vector<int> > matrix, int* z_square, int* u_square);
 
 #endif

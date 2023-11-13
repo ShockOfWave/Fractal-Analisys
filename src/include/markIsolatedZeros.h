@@ -3,6 +3,6 @@
 
 #include <vector>
 
-void markIsolatedZeros(std::vector<std::vector<int>>& matrix, int width, int height);
+void markIsolatedZeros(std::vector<std::vector<int> >& matrix, int width, int height);
 
 #endif

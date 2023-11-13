@@ -1,6 +1,6 @@
 #include "countUniqueMarkers.h"
 
-Marks countUniqueMarkers(const std::vector<std::vector<int>>& matrix) {
+Marks countUniqueMarkers(const std::vector<std::vector<int> >& matrix) {
     int width = matrix[0].size();
     int height = matrix.size();
     Marks marks;

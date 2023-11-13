@@ -1,6 +1,6 @@
 #include "boxCounting.h"
 
-std::vector<double> boxCounting(std::vector<int>&& regression, std::vector<std::vector<int>>&& matrix, double* holes_num) {
+std::vector<double> boxCounting(std::vector<int>&& regression, std::vector<std::vector<int> >&& matrix, double* holes_num) {
 
     std::vector<double> counts;
     std::sort(regression.begin(), regression.end());
