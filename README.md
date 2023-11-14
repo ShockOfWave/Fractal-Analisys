@@ -1,25 +1,53 @@
-# Fractal-Analisys for Linux
+# Fractal-Analisys
 
-1) Клонировать репозиторий к себе на пк;
-2) Установить GSL командами
+![GitHub](https://img.shields.io/github/license/ShockOfWave/Fractal-Analisys)
+![GitHub last commit](https://img.shields.io/github/last-commit/ShockOfWave/Fractal-Analisys)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/ShockOfWave/Fractal-Analisys)
+![contributors](https://img.shields.io/github/contributors/ShockOfWave/Fractal-Analisys) 
+![codesize](https://img.shields.io/github/languages/code-size/ShockOfWave/Fractal-Analisys)
+![GitHub repo size](https://img.shields.io/github/repo-size/ShockOfWave/Fractal-Analisys)
 
-  ```sudo apt-get update```
+# Introduction
 
- ```sudo apt-get install libgsl-dev```
+...
 
-3) Перейти в клонированную директорию и создать в ней папку "build" командой: ```mkdir build```
+# Installation
 
-4) Перейти в директорию "build" ```cd build```
-  
-5) создать Makefile ```cmake ..```
- 
-6) Командой "make" компилировать библиотеку .so;
-7) Открыть "example.py", указать абсолютный путь до расположения скомпилированной библиотеки и нужного файла .txt.
+* Copy repository on your machine
+```bash
+git clone git@github.com:ShockOfWave/Fractal-Analisys.git
+```
+* Install libgsl for your system
+    * For apt package manager:
+    ```bash
+    sudo apt install libgsl-dev
+    ```
+    * For brew package manager:
+    ```bash 
+    brew intall gsl
+    ```
+* Install python dependencies:
+```bash
+pip install .
+```
 
-Для использования библиотеки необходимо установить python3 менеджер пакетов pip и библиотеки: numpy, matplotlib.
-Сделать это можно следующим образом:
-# Установка менеджера пакетов:
-```sudo apt-get install python3-pip```
-# Установка сторонних библиотек:
-```pip install numpy```
-```pip install matplotlib```
+# Future work
+- [x] Write C++ code for lacunarity calculation
+  - [ ] Improve speed of calculation
+  - [ ] Make better integration of cpp code into python
+  - [ ] Improve OOP for C++ code
+- [x] Write base python bindings
+- [x] Make compile C++ code with pip
+- [ ] Add more TDA calculation
+- [ ] Add animation for slices
+- [ ] Create API
+
+# Acknowledgments/References
+We thank the [Infochemistry Scientific Center ISC](infochemistry.ru) for the provided data and computing power.
+
+# Reference & Citation
+
+Will be later...
+
+# License
+The code is distributed under the [MIT license](https://opensource.org/license/mit/).
