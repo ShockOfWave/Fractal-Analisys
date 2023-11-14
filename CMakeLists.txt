@@ -7,19 +7,19 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Список всех файлов .cpp в папке src/source
-file(GLOB SOURCE_FILES_CPP src/source/*.cpp)
+# Список всех файлов .cpp в папке lib/source
+file(GLOB SOURCE_FILES_CPP lib/source/*.cpp)
 
-# Список всех файлов .h в папке src/include
-file(GLOB HEADER_FILES_H src/include/*.h)
+# Список всех файлов .h в папке lib/include
+file(GLOB HEADER_FILES_H lib/include/*.h)
 
-include_directories(src/include)
-aux_source_directory(src/source SOURCES)
+include_directories(lib/include)
+aux_source_directory(lib/source SOURCES)
 
 find_package(GSL REQUIRED)
 
 include_directories(${GSL_INCLUDE_DIR})
-include_directories(/src/include)
+include_directories(/lib/include)
 
 add_library(lacunarity SHARED ${SOURCE_FILES_CPP} ${HEADER_FILES_H})
 
