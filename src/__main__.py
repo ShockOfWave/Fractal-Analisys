@@ -8,7 +8,7 @@ from src.paths.paths import PATH_TO_CPP_LIB
 
 
 def main():
-    all_files = find_files('data')
+    all_files = find_files('example_data')
     cpp_library = ctypes.CDLL(PATH_TO_CPP_LIB)
     lacunarity = Lacunarity(cpp_library)
 

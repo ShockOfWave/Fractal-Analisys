@@ -11,6 +11,12 @@
 
 ...
 
+# Functionality tested
+
+- [x] Debian based systems
+- [ ] Windows
+- [ ] MacOS
+
 # Installation
 
 * Copy repository on your machine
@@ -29,6 +35,21 @@ git clone git@github.com:ShockOfWave/Fractal-Analisys.git
 * Install python dependencies:
 ```bash
 pip install .
+```
+
+# Usage
+
+You can use our data to test package:
+```bash
+python -m src
+```
+
+If you want to use your own data, change input folder in `__main__.py`
+
+```python
+def main():
+    all_files = find_files('example_data')
+    ...
 ```
 
 # Future work

@@ -161,4 +161,3 @@ cython_debug/
 
 # Data folder (tmp)
 data/
-example_data/
