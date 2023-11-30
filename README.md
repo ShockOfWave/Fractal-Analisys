@@ -41,10 +41,10 @@ git clone git@github.com:ShockOfWave/Fractal-Analisys.git
     ```bash
     sudo apt install python3-venv
     ```
-    * Make
-      ```bash
-      sudo apt install make
-      ```
+  * Make
+    ```bash
+    sudo apt install make
+    ```
 * Install all dependencies:
 ```bash
 make install
