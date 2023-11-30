@@ -5,7 +5,7 @@ def find_files(directory) -> list:
     """
     Finds all files in a directory
     :param directory: directory
-    :return: list with paths
+    :return: list with utils
     """
 
     finded_files = []
