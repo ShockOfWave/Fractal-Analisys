@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 def plot_results(data, save_path) -> None:
     """
     Plots all results and saves it
-    :param data: output data from lacunarity calculation
+    :param data: evaluation data from lacunarity calculation
     :param save_path: path to save file
     :return: None
     """
