@@ -1,6 +1,7 @@
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 import os
+import src
 
 
 class CMakeExtension(Extension):
@@ -45,7 +46,7 @@ else:
 
 setup(
     name="TDA",
-    version='0.0.1',
+    version=src.__version__,
     packages=['lib'],
     ext_modules=[CMakeExtension(name='TDA')],
     cmdclass={'build_ext': cmake_build_ext},

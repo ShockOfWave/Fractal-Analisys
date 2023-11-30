@@ -5,7 +5,7 @@ import pandas as pd
 def table_results(data, save_path) -> None:
     """
     Creates csv file with results
-    :param data: output data from lacunarity calculation
+    :param data: evaluation data from lacunarity calculation
     :param save_path: path to save file
     :return: None
     """

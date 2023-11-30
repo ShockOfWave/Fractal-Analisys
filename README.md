@@ -32,24 +32,48 @@ git clone git@github.com:ShockOfWave/Fractal-Analisys.git
     ```bash 
     brew intall gsl
     ```
-* Install python dependencies:
+* Also you will need Python3, virtualenv and make
+    * Python3
+    ```bash
+    sudo apt install python3.10
+    ```
+    * Virtualenv
+    ```bash
+    sudo apt install python3-venv
+    ```
+    * Make
+      ```bash
+      sudo apt install make
+      ```
+* Install all dependencies:
 ```bash
-pip install .
+make install
 ```
+* Other commands you can check by
+```bash
+make help
+```
+
 
 # Usage
 
+## Check package
 You can use our data to test package:
 ```bash
-python -m src
+source venv/bin/activate
+python -m src example_data
 ```
 
-If you want to use your own data, change input folder in `__main__.py`
+Or you can test package with make:
+```bash
+make test_lacunarity
+```
 
-```python
-def main():
-    all_files = find_files('example_data')
-    ...
+## Other options
+
+You can run calculation on one process or to one file:
+```bash
+python -m src -h
 ```
 
 # Future work
@@ -59,12 +83,13 @@ def main():
   - [ ] Improve OOP for C++ code
 - [x] Write base python bindings
 - [x] Make compile C++ code with pip
+- [x] Add multiprocessing in Python
 - [ ] Add more TDA calculation
 - [ ] Add animation for slices
 - [ ] Create API
 
 # Acknowledgments/References
-We thank the [Infochemistry Scientific Center ISC](infochemistry.ru) for the provided data and computing power.
+We thank the [Infochemistry Scientific Center ISC](https://infochemistry.ru) for the provided data and computing power.
 
 # Reference & Citation
 

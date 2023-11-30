@@ -1,6 +1,6 @@
 import ctypes
 import numpy as np
-from src.lacunarity.utils import Result
+from src.calculations.lacunarity.utils import Result
 
 
 class Lacunarity:
@@ -12,10 +12,9 @@ class Lacunarity:
         Loads cpp library and init ctypes dict
         :param path_to_lib: path to cpp library
         """
-        # self.path_to_lib = path_to_lib
+
         self.loaded_lib = loaded_lib
         self.ND_POINTER_2 = np.ctypeslib.ndpointer(dtype=np.float64, ndim=2)
-        # self.cpplib = ctypes.CDLL(self.path_to_lib)
         self.results = Result
 
     def calc_all(self, path_to_matrix):
