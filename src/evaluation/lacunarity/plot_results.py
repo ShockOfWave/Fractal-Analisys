@@ -1,6 +1,7 @@
 import os
 import matplotlib.pyplot as plt
 
+
 def plot_results(data, save_path) -> None:
     """
     Plots all results and saves it

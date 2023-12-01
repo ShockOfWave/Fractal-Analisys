@@ -18,10 +18,15 @@ def load_args() -> argparse.Namespace:
     )
 
     parser.add_argument("path", type=str, help="path to folder with files")
-    parser.add_argument("-f", "--file", action="store_true", help="path to file instead folder")
-    parser.add_argument('-p', '--processes', action="store_true",
+    parser.add_argument("-f", "--file",
+                        action="store_true",
+                        help="path to file instead folder")
+    parser.add_argument('-p', '--processes',
+                        action="store_true",
                         help="puns calculations without using multiprocessing")
-    parser.add_argument('-v', '--version', action='version', version='%(prog)s {}'.format(__version__),
+    parser.add_argument('-v', '--version',
+                        action='version',
+                        version='%(prog)s {}'.format(__version__),
                         help='show the version number and exit')
 
     args = parser.parse_args()
@@ -34,7 +39,8 @@ def run_calculations(path, file=False, without_multiprocess=False):
     Run calculations
     :param path: path to folder or file to calculate
     :param file: change folder to file if True
-    :param without_multiprocess: run calculation without multiprocessing if True
+    :param without_multiprocess: run calculation without \
+    multiprocessing if True
     """
 
     if file:

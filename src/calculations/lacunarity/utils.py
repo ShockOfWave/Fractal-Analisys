@@ -1,7 +1,7 @@
 import ctypes
 
 
-class Result(ctypes.Structure):  #структура указателей для возвращения в нее массивов с расчитанными данными
+class Result(ctypes.Structure):  # структура указателей для возвращения в нее массивов с расчитанными данными
     _fields_ = [
         ("pressures", ctypes.POINTER(ctypes.c_double)),
         ("pressures_len", ctypes.c_size_t),
