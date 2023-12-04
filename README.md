@@ -6,6 +6,10 @@
 ![contributors](https://img.shields.io/github/contributors/ShockOfWave/Fractal-Analisys) 
 ![codesize](https://img.shields.io/github/languages/code-size/ShockOfWave/Fractal-Analisys)
 ![GitHub repo size](https://img.shields.io/github/repo-size/ShockOfWave/Fractal-Analisys)
+![GitHub top language](https://img.shields.io/github/languages/top/ShockOfWave/Fractal-Analisys)
+![GitHub language count](https://img.shields.io/github/languages/count/ShockOfWave/Fractal-Analisys)
+
+
 
 # Introduction
 
