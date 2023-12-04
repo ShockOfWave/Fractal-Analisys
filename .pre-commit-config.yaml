@@ -1,6 +1,13 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
-exclude: "lib/"
+exclude: |
+  (?x)(
+    ^lib/|
+    ^build/|
+    ^data/|
+    ^example_data/|
+    ^setup.py
+  )
 default_stages: [commit]
 
 repos:
@@ -24,8 +31,6 @@ repos:
         args: ['--pytest-test-first']
         # fix requirements
       - id: requirements-txt-fixer
-        # sort yaml files
-      - id: sort-simple-yaml
   - repo: 'https://github.com/PyCQA/flake8'
     rev: 6.1.0
     hooks:
