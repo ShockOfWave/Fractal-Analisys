@@ -25,4 +25,3 @@ add_library(lacunarity SHARED ${SOURCE_FILES_CPP} ${HEADER_FILES_H})
 
 
 target_link_libraries(lacunarity PRIVATE ${GSL_LIBRARY})
-

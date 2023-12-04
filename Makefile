@@ -3,12 +3,13 @@ PYTHON = $(VENV)/bin/python3
 PIP = $(VENV)/bin/pip
 PYTEST = $(VENV)/bin/pytest
 FLAKE8 = $(VENV)/bin/flake8
+PRE-COMMIT = $(VENV)/bin/pre-commit
 
 define find.functions
 		@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 endef
 
-.PHONY: install clean run_example all help tests linter
+.PHONY: install clean run_example all help tests linter ci
 
 help:
 	@echo 'The following commands can be used.'
@@ -55,3 +56,7 @@ tests:
 linter: ## runs flake8 linters
 linter:
 	$(FLAKE8) src
+
+ci: ## runs pre-commit tests
+ci:
+	$(PRE-COMMIT) run --all-files

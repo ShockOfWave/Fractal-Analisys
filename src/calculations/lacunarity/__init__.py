@@ -1,3 +1,1 @@
-
-
-__all__ = ['lacunarity', 'utils']
+__all__ = ["lacunarity", "utils"]

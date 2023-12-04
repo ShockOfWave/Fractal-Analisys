@@ -14,20 +14,26 @@ def load_args() -> argparse.Namespace:
         prog="TDA calculation",
         description="Calculates TDA values for surface",
         epilog="Thanks for using %(prog)s! \n \n"
-               "We will be grateful enough if you cite our articles :)",
+        "We will be grateful enough if you cite our articles :)",
     )
 
     parser.add_argument("path", type=str, help="path to folder with files")
-    parser.add_argument("-f", "--file",
-                        action="store_true",
-                        help="path to file instead folder")
-    parser.add_argument('-p', '--processes',
-                        action="store_true",
-                        help="puns calculations without using multiprocessing")
-    parser.add_argument('-v', '--version',
-                        action='version',
-                        version='%(prog)s {}'.format(__version__),
-                        help='show the version number and exit')
+    parser.add_argument(
+        "-f", "--file", action="store_true", help="path to file instead folder"
+    )
+    parser.add_argument(
+        "-p",
+        "--processes",
+        action="store_true",
+        help="puns calculations without using multiprocessing",
+    )
+    parser.add_argument(
+        "-v",
+        "--version",
+        action="version",
+        version="%(prog)s {}".format(__version__),
+        help="show the version number and exit",
+    )
 
     args = parser.parse_args()
 
@@ -67,5 +73,5 @@ def main():
     run_calculations(args.path, args.file, args.processes)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
