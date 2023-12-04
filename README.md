@@ -54,6 +54,11 @@ make install
 make help
 ```
 
+* (Optional) Install pre-commit:
+```bash
+pre-commit install
+```
+
 
 # Usage
 

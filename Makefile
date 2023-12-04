@@ -57,6 +57,9 @@ linter: ## runs flake8 linters
 linter:
 	$(FLAKE8) src
 
-ci: ## runs pre-commit tests
+ci: ## completely rebuild project and runs pre-commit tests
 ci:
+	rm -rf build TDA.egg-info venv
+	python3 -m venv venv
+	$(PIP) install .
 	$(PRE-COMMIT) run --all-files
