@@ -6,4 +6,4 @@ struct Coord {
     Coord(int x, int y) : x(x), y(y) {}
 };
 
-#endif
+#endif // COORD_H

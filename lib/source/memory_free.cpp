@@ -14,7 +14,5 @@ extern "C"{
 		delete[] result.z_square;
 		delete[] result.half_regressions;
 		delete[] result.lambdas;
-		delete[] result.exp_half_regressions;
-		delete[] result.exp_lambdas;
 	}
 }
