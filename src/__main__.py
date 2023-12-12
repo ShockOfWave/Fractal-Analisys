@@ -1,5 +1,6 @@
 import os
 import argparse
+from rich.progress import Progress
 from src import __version__
 from multiprocessing import Pool
 from src.calculations.lacunarity.one_file_calculation import calc_one_file
@@ -59,8 +60,12 @@ def run_calculations(path, file=False, without_multiprocess=False):
                 calc_one_file(file)
 
         else:
-            with Pool() as p:
-                p.map(calc_one_file, files)
+            with Progress() as progress:
+                task_id = progress.add_task("[cyan]Completed...", total=len(files))
+                with Pool() as p:
+                    results = p.imap(calc_one_file, files)
+                    for _ in results:
+                        progress.advance(task_id)
 
 
 def main():
