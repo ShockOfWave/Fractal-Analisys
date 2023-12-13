@@ -4,6 +4,7 @@ exclude: |
   (?x)(
     ^lib/|
     ^build/|
+    ^backend/|
     ^data/|
     ^example_data/|
     ^setup.py

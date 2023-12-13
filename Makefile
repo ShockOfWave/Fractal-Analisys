@@ -4,12 +4,13 @@ PIP = $(VENV)/bin/pip
 PYTEST = $(VENV)/bin/pytest
 FLAKE8 = $(VENV)/bin/flake8
 PRE-COMMIT = $(VENV)/bin/pre-commit
+STREAMLIT = $(VENV)/bin/streamlit
 
 define find.functions
 		@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 endef
 
-.PHONY: install clean run_example all help tests linter ci
+.PHONY: install clean run_example all help tests linter ci app
 
 help:
 	@echo 'The following commands can be used.'
@@ -32,12 +33,12 @@ install:
 
 clean: ## cleans venv and build
 clean:
-	rm -rfv build TDA.egg-info venv
+	rm -rfv build TDA.egg-info venv backend
 
 
 run_example: ## runs calculations with example files
 run_example:
-	$(PYTHON) -m src example_data
+	$(PYTHON ) -m src example_data
 
 
 all: ## cleans all, rebuild, tests run calculation with example files
@@ -63,3 +64,7 @@ ci:
 	python3 -m venv venv
 	$(PIP) install .
 	$(PRE-COMMIT) run --all-files
+
+app: ## runs the streamlit application
+app:
+	$(STREAMLIT) run app.py --server.port=8520

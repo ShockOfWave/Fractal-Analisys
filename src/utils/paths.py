@@ -28,3 +28,6 @@ def find_library() -> str:
 
 
 PATH_TO_CPP_LIB = find_library()
+PATH_TO_TMP = os.path.join(get_project_path(), "backend", "tmp")
+PATH_TO_TMP_FILES_DIR = os.path.join(get_project_path(), "backend", "files")
+PATH_TO_TMP_ARCHIVE_DIR = os.path.join(get_project_path(), "backend", "archives")
