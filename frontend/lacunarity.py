@@ -33,18 +33,21 @@ if st.button("Upload file"):
         e = FileNotFoundError("Please select file")
         st.exception(e)
     else:
-        study_name = str(uploaded_file.name) + str(uuid.uuid4())
-        file_path = os.path.join(PATH_TO_TMP_FILES_DIR, study_name)
-        archive_path = os.path.join(PATH_TO_TMP_ARCHIVE_DIR, study_name)
-        os.makedirs(file_path)
+        with st.spinner("Calculating..."):
+            study_name = str(uploaded_file.name) + str(uuid.uuid4())
+            file_path = os.path.join(PATH_TO_TMP_FILES_DIR, study_name)
+            archive_path = os.path.join(PATH_TO_TMP_ARCHIVE_DIR, study_name)
+            os.makedirs(file_path)
 
-        with open(os.path.join(file_path, uploaded_file.name), "wb") as out_file:
-            content = uploaded_file.read()
-            out_file.write(content)
+            with open(os.path.join(file_path, uploaded_file.name), "wb") as out_file:
+                content = uploaded_file.read()
+                out_file.write(content)
 
-        calc_one_file(os.path.join(file_path, uploaded_file.name))
+            calc_one_file(os.path.join(file_path, uploaded_file.name))
 
-        shutil.make_archive(archive_path, "zip", file_path)
+            shutil.make_archive(archive_path, "zip", file_path)
+
+        st.success("Done!")
 
         st.markdown(
             """
@@ -104,8 +107,9 @@ if st.button("Upload files"):
         e = FileNotFoundError("Please select files")
         st.exception(e)
     else:
+        progress_bar = st.progress(0, text="Start calculating...")
         studies = []
-        for up_file in uploaded_files:
+        for i, up_file in enumerate(uploaded_files):
             study_name = str(up_file.name)[:-4] + "_" + str(uuid.uuid4())
             file_path = os.path.join(PATH_TO_TMP_FILES_DIR, study_name)
             archive_path = os.path.join(PATH_TO_TMP_ARCHIVE_DIR, study_name)
@@ -117,6 +121,13 @@ if st.button("Upload files"):
 
             studies.append(study_name)
             calc_one_file(os.path.join(file_path, up_file.name))
+            progress_bar.progress(
+                (100 / len(uploaded_files) / 100) * (i + 1),
+                text=f"Calculating {up_file.name}",
+            )
+
+        progress_bar.empty()
+        st.success("Done!")
 
         path_to_zip = os.path.join(PATH_TO_TMP_ARCHIVE_DIR, str(uuid.uuid4()) + ".zip")
 
