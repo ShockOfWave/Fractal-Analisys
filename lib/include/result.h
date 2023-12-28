@@ -1,9 +1,8 @@
 #ifndef RESULT_H
 #define RESULT_H
-
 #include <cstddef>
-
-struct Result { //структура для возврата массивов в python
+struct Result { 
+// struct for returning arrays to python
 	double* pressures;
 	size_t pressures_len;
 		
@@ -39,11 +38,8 @@ struct Result { //структура для возврата массивов в
 
 	double* lambdas;
 	size_t lambdas_len;
-	
-	double* exp_half_regressions;
-	size_t exp_half_regressions_len;
 
-	double* exp_lambdas;
-	size_t exp_lambdas_len;
+    int* z_bgVec;
+    size_t z_bg_len;
 };
 #endif

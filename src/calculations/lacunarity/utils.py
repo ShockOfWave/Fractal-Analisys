@@ -29,8 +29,6 @@ class Result(
         ("half_regressions_len", ctypes.c_size_t),
         ("lambdas", ctypes.POINTER(ctypes.c_double)),
         ("lambdas_len", ctypes.c_size_t),
-        ("exp_half_regressions", ctypes.POINTER(ctypes.c_double)),
-        ("exp_half_regressions_len", ctypes.c_size_t),
-        ("exp_lambdas", ctypes.POINTER(ctypes.c_double)),
-        ("exp_lambdas_len", ctypes.c_size_t),
+        ("z_bgVec", ctypes.POINTER(ctypes.c_int)),
+        ("z_bgVec_len", ctypes.c_size_t),
     ]

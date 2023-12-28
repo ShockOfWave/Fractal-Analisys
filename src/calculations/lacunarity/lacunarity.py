@@ -24,14 +24,20 @@ class Lacunarity:
         :param path_to_matrix: path to matrix
         :return: dict with results of lacunarity calculation
         """
-
+        ##################################################
+        connectivity = 4 #4 or 8 connectivity
+	box = 2 # 1 - box-counting 2 - slide box-counting
+	Number = 100 #number of slices
+	wait_k = 20 #for future visualization maybe (on that moment this value is unused)
+        #################################################
+        
         # ND_POINTER_2 = np.ctypeslib.ndpointer(dtype=np.float64, ndim=2)
-        self.loaded_lib.lacunarity.argtypes = [self.ND_POINTER_2, ctypes.c_size_t]
+        self.loaded_lib.lacunarity.argtypes = [self.ND_POINTER_2, ctypes.c_size_t, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int]
         self.loaded_lib.lacunarity.restype = Result
 
         data = np.loadtxt(path_to_matrix, dtype=np.float64)
 
-        result = self.loaded_lib.lacunarity(data, *data.shape)
+        result = self.loaded_lib.lacunarity(data, *data.shape, connectivity, box, Number, wait_k)
         results = {
             "pressures": np.ctypeslib.as_array(
                 result.pressures, shape=(result.pressures_len,)
@@ -68,11 +74,8 @@ class Lacunarity:
             "lambdas": np.ctypeslib.as_array(
                 result.lambdas, shape=(result.lambdas_len,)
             ),
-            "exp_half_regressions": np.ctypeslib.as_array(
-                result.exp_half_regressions, shape=(result.exp_half_regressions_len,)
-            ),
-            "exp_lambdas": np.ctypeslib.as_array(
-                result.exp_lambdas, shape=(result.exp_lambdas_len,)
+            "z_bgVec": np.ctypeslib.as_array(
+                result.z_bgVec, shape=(result.z_bgVec_len,)
             ),
         }
 
