@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include <cmath>
-#include <opencv2/opencv.hpp>
+//#include <opencv2/opencv.hpp>
 #include "gsl/gsl_fit.h"
 #include "Coord.h"
 #include "hasNumber.h"

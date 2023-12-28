@@ -25,19 +25,30 @@ class Lacunarity:
         :return: dict with results of lacunarity calculation
         """
         ##################################################
-        connectivity = 4 #4 or 8 connectivity
-	box = 2 # 1 - box-counting 2 - slide box-counting
-	Number = 100 #number of slices
-	wait_k = 20 #for future visualization maybe (on that moment this value is unused)
+        connectivity = 4  # 4 or 8 connectivity
+        box = 2  # 1 - box-counting 2 - slide box-counting
+        Number = 100  # number of slices
+        wait_k = (
+            20  # for future visualization maybe (on that moment this value is unused)
+        )
         #################################################
-        
+
         # ND_POINTER_2 = np.ctypeslib.ndpointer(dtype=np.float64, ndim=2)
-        self.loaded_lib.lacunarity.argtypes = [self.ND_POINTER_2, ctypes.c_size_t, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int]
+        self.loaded_lib.lacunarity.argtypes = [
+            self.ND_POINTER_2,
+            ctypes.c_size_t,
+            ctypes.c_int,
+            ctypes.c_int,
+            ctypes.c_int,
+            ctypes.c_int,
+        ]
         self.loaded_lib.lacunarity.restype = Result
 
         data = np.loadtxt(path_to_matrix, dtype=np.float64)
 
-        result = self.loaded_lib.lacunarity(data, *data.shape, connectivity, box, Number, wait_k)
+        result = self.loaded_lib.lacunarity(
+            data, *data.shape, connectivity, box, Number, wait_k
+        )
         results = {
             "pressures": np.ctypeslib.as_array(
                 result.pressures, shape=(result.pressures_len,)

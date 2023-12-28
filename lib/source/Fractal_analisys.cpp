@@ -1,4 +1,4 @@
-#include "Fractal_Analisys.h"
+#include "Fractal_analisys.h"
 // finding the regression from the min side of the image
 void calc_Regression(std::vector<int>&& regression, int height, int width) {
     int n = 0;
