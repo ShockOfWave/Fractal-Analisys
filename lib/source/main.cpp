@@ -1,7 +1,7 @@
 #include <ctime>
 #include <iostream>
 #include <cstdlib>
-#include "Fractal_Analisys.h"
+#include "Fractal_analisys.h"
 
 extern "C"{
 	Result lacunarity(double* array, size_t n, size_t p, int connectivity, int box, int N, int wait_k) {
