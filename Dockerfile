@@ -4,26 +4,12 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         build-essential \
         software-properties-common \
-        autoconf \
-        automake \
-        libtool \
-        pkg-config \
-        ca-certificates \
-        libssl-dev \
-        wget \
-        git \
-        curl \
-        language-pack-en \
-        locales \
-        locales-all \
-        gdb \
         python3.10 \
         python3-pip \
         python3-apt \
         cmake \
         make \
-        libgsl-dev \
-        valgrind && \
+        libgsl-dev && \
     apt-get clean
 
 ENV LC_ALL en_US.UTF-8
