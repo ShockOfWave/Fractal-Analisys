@@ -80,22 +80,34 @@ make test_lacunarity
 
 ## Other options
 
+### CLI usage
 You can run calculation on one process or to one file:
 ```bash
 python -m src -h
 ```
 
+### Web UI usage
+This app based on [streamlit](https://streamlit.io) library:
+```bash
+streamlit run app.py
+```
+
+### Docker container with Web UI
+Also you can build and run docker container.
+
+Dockerhub release in future...
+
 # Future work
 - [x] Write C++ code for lacunarity calculation
   - [ ] Improve speed of calculation
   - [ ] Make better integration of cpp code into python
-  - [ ] Improve OOP for C++ code
+  - [x] Improve OOP for C++ code
 - [x] Write base python bindings
 - [x] Make compile C++ code with pip
 - [x] Add multiprocessing in Python
 - [ ] Add more TDA calculation
 - [ ] Add animation for slices
-- [ ] Create API
+- [x] Create API
 
 # Acknowledgments/References
 We thank the [Infochemistry Scientific Center ISC](https://infochemistry.ru) for the provided data and computing power.

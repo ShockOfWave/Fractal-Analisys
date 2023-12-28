@@ -163,8 +163,7 @@ cython_debug/
 data/
 example_data/text_data/
 example_data/text_data_1/
-**.uuid**
+backend/
 
-# streamlit
+# Streamlit secrets
 .streamlit/secrets.toml
-backend
