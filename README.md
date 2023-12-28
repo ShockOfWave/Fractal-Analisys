@@ -62,6 +62,10 @@ make help
 ```bash
 pre-commit install
 ```
+And use it before pull-request:
+```bash
+pre-commit run --all-files
+```
 
 
 # Usage
