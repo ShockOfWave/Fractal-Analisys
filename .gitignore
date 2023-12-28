@@ -164,3 +164,7 @@ data/
 example_data/text_data/
 example_data/text_data_1/
 **.uuid**
+
+# streamlit
+.streamlit/secrets.toml
+backend
