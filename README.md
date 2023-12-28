@@ -91,6 +91,12 @@ This app based on [streamlit](https://streamlit.io) library:
 ```bash
 streamlit run app.py
 ```
+Set login and password for Web UI in .streamlit/secrets.toml
+```
+[passwords]
+
+user = "password"
+```
 
 ### Docker container with Web UI
 Also you can build and run docker container.
