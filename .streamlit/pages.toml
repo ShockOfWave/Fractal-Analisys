@@ -1,0 +1,7 @@
+[[pages]]
+path = 'frontend/welcome.py'
+name = 'Welcome'
+
+[[pages]]
+path = 'frontend/lacunarity.py'
+name = 'Lacunarity'

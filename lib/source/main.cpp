@@ -1,10 +1,12 @@
 #include <ctime>
 #include <iostream>
-#include "Fractal_Analisys.h"
+#include <cstdlib>
+#include "Fractal_analisys.h"
 
 extern "C"{
 	Result lacunarity(double* array, size_t n, size_t p, int connectivity, int box, int N, int wait_k) {
 		clock_t start_time = clock();
+        int loading = 0;
 		std::vector<std::vector<double> > image;
 		for (size_t i = 0; i < n; i++){
         	std::vector<double> row;
@@ -49,7 +51,10 @@ extern "C"{
 		calc_Regression(std::move(regression), height, width);
 
 		for (double pressure = 0.0; pressure < 1.0; pressure += (dPressure)) {
-		    
+            if((loading % 5) == 0){
+                show_loading_progress(loading, 100);
+            }
+            loading++;
 		    double holes_num = 0.0;
 		    int ex_ones = 0;
 		    int in_ones = 0;
@@ -91,7 +96,8 @@ extern "C"{
 		    z_square.push_back(z);
             z_bgVec.push_back(z_bg);
 		}
-        // cv::destroyAllWindows();
+        show_loading_progress(loading, 100);
+        std::system("clear");
 		computeDerivative(pressures, relationship, std::move(relationship_derivatives));
 		
 		result.pressures_len = pressures.size();

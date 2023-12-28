@@ -161,3 +161,9 @@ cython_debug/
 
 # Data folder (tmp)
 data/
+example_data/text_data/
+example_data/text_data_1/
+backend/
+
+# Streamlit secrets
+.streamlit/secrets.toml

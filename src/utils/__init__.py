@@ -1,3 +1,1 @@
-
-
-__all__ = ['find_files', 'paths']
+__all__ = ["find_files", "paths"]

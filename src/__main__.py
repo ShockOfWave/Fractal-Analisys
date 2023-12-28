@@ -1,5 +1,6 @@
 import os
 import argparse
+from rich.progress import Progress
 from src import __version__
 from multiprocessing import Pool
 from src.calculations.lacunarity.one_file_calculation import calc_one_file
@@ -14,15 +15,26 @@ def load_args() -> argparse.Namespace:
         prog="TDA calculation",
         description="Calculates TDA values for surface",
         epilog="Thanks for using %(prog)s! \n \n"
-               "We will be grateful enough if you cite our articles :)",
+        "We will be grateful enough if you cite our articles :)",
     )
 
     parser.add_argument("path", type=str, help="path to folder with files")
-    parser.add_argument("-f", "--file", action="store_true", help="path to file instead folder")
-    parser.add_argument('-p', '--processes', action="store_true",
-                        help="puns calculations without using multiprocessing")
-    parser.add_argument('-v', '--version', action='version', version='%(prog)s {}'.format(__version__),
-                        help='show the version number and exit')
+    parser.add_argument(
+        "-f", "--file", action="store_true", help="path to file instead folder"
+    )
+    parser.add_argument(
+        "-p",
+        "--processes",
+        action="store_true",
+        help="puns calculations without using multiprocessing",
+    )
+    parser.add_argument(
+        "-v",
+        "--version",
+        action="version",
+        version="%(prog)s {}".format(__version__),
+        help="show the version number and exit",
+    )
 
     args = parser.parse_args()
 
@@ -34,7 +46,8 @@ def run_calculations(path, file=False, without_multiprocess=False):
     Run calculations
     :param path: path to folder or file to calculate
     :param file: change folder to file if True
-    :param without_multiprocess: run calculation without multiprocessing if True
+    :param without_multiprocess: run calculation without \
+    multiprocessing if True
     """
 
     if file:
@@ -47,8 +60,12 @@ def run_calculations(path, file=False, without_multiprocess=False):
                 calc_one_file(file)
 
         else:
-            with Pool() as p:
-                p.map(calc_one_file, files)
+            with Progress() as progress:
+                task_id = progress.add_task("[cyan]Completed...", total=len(files))
+                with Pool() as p:
+                    results = p.imap(calc_one_file, files)
+                    for _ in results:
+                        progress.advance(task_id)
 
 
 def main():
@@ -61,5 +78,5 @@ def main():
     run_calculations(args.path, args.file, args.processes)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

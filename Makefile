@@ -1,12 +1,16 @@
 VENV = venv
 PYTHON = $(VENV)/bin/python3
 PIP = $(VENV)/bin/pip
+PYTEST = $(VENV)/bin/pytest
+FLAKE8 = $(VENV)/bin/flake8
+PRE-COMMIT = $(VENV)/bin/pre-commit
+STREAMLIT = $(VENV)/bin/streamlit
 
 define find.functions
 		@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 endef
 
-.PHONY: install clean run_example all help lacunarity_test
+.PHONY: install clean run_example all help tests linter ci app
 
 help:
 	@echo 'The following commands can be used.'
@@ -29,21 +33,38 @@ install:
 
 clean: ## cleans venv and build
 clean:
-	rm -rfv build TDA.egg-info venv
+	rm -rfv build TDA.egg-info venv backend
 
 
 run_example: ## runs calculations with example files
 run_example:
-	$(PYTHON) -m src example_data
+	$(PYTHON ) -m src example_data
 
 
-all: ## cleans all, rebuild and run calculation with example files
+all: ## cleans all, rebuild, tests run calculation with example files
 all:
 	rm -rfv build TDA.egg-info venv
 	python3 -m venv venv
 	$(PIP) install .
+	$(PYTEST) tests
 	$(PYTHON) -m src example_data
+	$(FLAKE8) src
 
-lacunarity_test: ## runs tests of lacunarity witn pytest
-lacunarity_test:
-	$(PYTHON) -m pytest tests/test_lacunarity.py
+tests: ## runs tests of lacunarity witn pytest
+tests:
+	$(PYTEST) tests/test_lacunarity.py
+
+linter: ## runs flake8 linters
+linter:
+	$(FLAKE8) src
+
+ci: ## completely rebuild project and runs pre-commit tests
+ci:
+	rm -rf build TDA.egg-info venv
+	python3 -m venv venv
+	$(PIP) install .
+	$(PRE-COMMIT) run --all-files
+
+app: ## runs the streamlit application
+app:
+	$(STREAMLIT) run app.py --server.port=8520

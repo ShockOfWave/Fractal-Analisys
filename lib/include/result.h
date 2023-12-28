@@ -1,8 +1,6 @@
 #ifndef RESULT_H
 #define RESULT_H
-
 #include <cstddef>
-
 struct Result { 
 // struct for returning arrays to python
 	double* pressures;

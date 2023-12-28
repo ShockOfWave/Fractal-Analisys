@@ -6,6 +6,10 @@
 ![contributors](https://img.shields.io/github/contributors/ShockOfWave/Fractal-Analisys) 
 ![codesize](https://img.shields.io/github/languages/code-size/ShockOfWave/Fractal-Analisys)
 ![GitHub repo size](https://img.shields.io/github/repo-size/ShockOfWave/Fractal-Analisys)
+![GitHub top language](https://img.shields.io/github/languages/top/ShockOfWave/Fractal-Analisys)
+![GitHub language count](https://img.shields.io/github/languages/count/ShockOfWave/Fractal-Analisys)
+
+
 
 # Introduction
 
@@ -54,6 +58,11 @@ make install
 make help
 ```
 
+* (Optional) Install pre-commit:
+```bash
+pre-commit install
+```
+
 
 # Usage
 
@@ -71,22 +80,40 @@ make test_lacunarity
 
 ## Other options
 
+### CLI usage
 You can run calculation on one process or to one file:
 ```bash
 python -m src -h
 ```
 
+### Web UI usage
+This app based on [streamlit](https://streamlit.io) library:
+```bash
+streamlit run app.py
+```
+Set login and password for Web UI in .streamlit/secrets.toml
+```
+[passwords]
+
+user = "password"
+```
+
+### Docker container with Web UI
+Also you can build and run docker container.
+
+Dockerhub release in future...
+
 # Future work
 - [x] Write C++ code for lacunarity calculation
   - [ ] Improve speed of calculation
   - [ ] Make better integration of cpp code into python
-  - [ ] Improve OOP for C++ code
+  - [x] Improve OOP for C++ code
 - [x] Write base python bindings
 - [x] Make compile C++ code with pip
 - [x] Add multiprocessing in Python
 - [ ] Add more TDA calculation
 - [ ] Add animation for slices
-- [ ] Create API
+- [x] Create API
 
 # Acknowledgments/References
 We thank the [Infochemistry Scientific Center ISC](https://infochemistry.ru) for the provided data and computing power.
