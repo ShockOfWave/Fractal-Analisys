@@ -26,6 +26,28 @@ st.markdown(
 """
 )
 
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    number_of_slices = st.number_input(
+        "Select number of slices",
+        min_value=2,
+        max_value=1000,
+        value=100,
+        step=1,
+        key="single_slices",
+    )
+
+with col2:
+    connectivity = st.selectbox(
+        "Select connectivity method", (4, 8), index=0, key="single_connectivity"
+    )
+
+with col3:
+    box_counting = st.selectbox(
+        "Select box counting method", (2, 1), index=1, key="single_box_counting"
+    )
+
 uploaded_file = st.file_uploader("Choose a file")
 
 if st.button("Upload file"):
@@ -43,7 +65,12 @@ if st.button("Upload file"):
                 content = uploaded_file.read()
                 out_file.write(content)
 
-            calc_one_file(os.path.join(file_path, uploaded_file.name))
+            calc_one_file(
+                os.path.join(file_path, uploaded_file.name),
+                number_of_slices=number_of_slices,
+                connectivity=connectivity,
+                box_counting=box_counting,
+            )
 
             shutil.make_archive(archive_path, "zip", file_path)
 
@@ -51,8 +78,8 @@ if st.button("Upload file"):
 
         st.markdown(
             """
-                    ### You can download all plots in SVG format here
-                    """
+            ### You can download all plots in SVG format here
+            """
         )
 
         with open(archive_path + ".zip", "rb") as f:
@@ -64,8 +91,8 @@ if st.button("Upload file"):
 
         st.markdown(
             """
-                    ### There is results
-                    """
+            ### There is results
+            """
         )
 
         with col1:
@@ -97,6 +124,28 @@ st.markdown(
             """
 )
 
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    number_of_slices = st.number_input(
+        "Select number of slices",
+        min_value=2,
+        max_value=1000,
+        value=100,
+        step=1,
+        key="multiply_slices",
+    )
+
+with col2:
+    connectivity = st.selectbox(
+        "Select connectivity method", (4, 8), index=0, key="multiply_connectivity"
+    )
+
+with col3:
+    box_counting = st.selectbox(
+        "Select box counting method", (2, 1), index=1, key="multiply_box_counting"
+    )
+
 uploaded_files = st.file_uploader("Choose files", accept_multiple_files=True)
 
 if st.button("Upload files"):
@@ -117,7 +166,12 @@ if st.button("Upload files"):
                 out_file.write(content)
 
             studies.append(study_name)
-            calc_one_file(os.path.join(file_path, up_file.name))
+            calc_one_file(
+                os.path.join(file_path, up_file.name),
+                number_of_slices=number_of_slices,
+                connectivity=connectivity,
+                box_counting=box_counting,
+            )
             progress_bar.progress(
                 (100 / len(uploaded_files) / 100) * (i + 1),
                 text=f"Calculating {up_file.name}",
