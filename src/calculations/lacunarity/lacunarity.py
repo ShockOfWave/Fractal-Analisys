@@ -62,6 +62,9 @@ class Lacunarity:
                 result.derivatives, shape=(result.derivatives_len,)
             ),
             "holes": np.ctypeslib.as_array(result.holes, shape=(result.holes_len,)),
+            "holes_int": np.ctypeslib.as_array(
+                result.holes_int, shape=(result.holes_int_len,)
+            ),
             "external_lands": np.ctypeslib.as_array(
                 result.external_lands, shape=(result.external_lands_len,)
             ),

@@ -25,6 +25,7 @@ def plot_results(data, save_path) -> None:
     plt.plot(data["pressures"], data["external_lands"], label="External Lands")
     plt.plot(data["pressures"], data["internal_lands"], label="Internal Lands")
     plt.plot(data["pressures"], data["holes"], label="Holes")
+    plt.plot(data["pressures"], data["holes_int"], label="Internal Holes")
     plt.title("Objects on slices distrib")
     plt.xlabel("% Slice")
     plt.ylabel("Number")

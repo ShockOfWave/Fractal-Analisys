@@ -1,7 +1,7 @@
 #include <ctime>
 #include <iostream>
 #include <cstdlib>
-#include "Fractal_analisys.h"
+#include "matrix_process.h"
 
 extern "C"{
 	Result lacunarity(double* array, size_t n, size_t p, int connectivity, int box, int N, int wait_k) {
@@ -20,19 +20,21 @@ extern "C"{
 		double p_limit = 1.0;
 		std::vector<int> regression;
 		std::vector<double> pressures; 
-		// массив для хранения значения давления на каждом срезе
+        // an array for storing the pressure value on each slice
 		std::vector<double> derivatives; 
-		// массив для хранения значения производной вычисленной по мнк для зависимости log10N-log10r^-1 на каждом срезе
+        // array for storing the value of the derivative calculated by least squares for the log10N-log10r^-1 dependence on each slice
 		std::vector<int> holes;
-		// массив для добавления количества пропастей
+        // array to add number of gaps
+        std::vector<int> holes_int;
+        // number of internal holes
 		std::vector<int> external_lands; 
-		// массив для добавления количества внешних единиц
+        // array to add number of external units
 		std::vector<int> internal_lands; 
-		// массив для добавления количества внутренних единиц
+        // array to add number of internal units
 		std::vector<double> relationship; 
-		// массив для добавления отношения количества пропастей к общей площади поверхности
+        // an array to add the ratio of the number of gaps to the total surface area
 		std::vector<double> relationship_derivatives; 
-		// массив для добавления частных производных от пердыдещгo
+        // array for adding partial derivatives of the previous one
         std::vector<int> z_bgVec;
 
 		std::vector<double> half_regressions;
@@ -44,7 +46,7 @@ extern "C"{
 		std::vector<int> in_ones_square;
 		std::vector<int> z_square;
         double dPressure = static_cast<double>(1.0/N);
-		const int height = image.size();  //определение константных парамтеров - размера матрицы
+        const int height = image.size();  // determination of constant parameters - matrix size
 		const int width = image[0].size();
 		const int square = (image.size()) * (image[0].size());
 
@@ -82,12 +84,15 @@ extern "C"{
 			else {
     			mark_squares_4(std::move(matrix), height, width);
 			}
-            int count = markInnerOnes(matrix, &in_ones); //внутренние единицы и их площадь
+            int count = markInnerOnes(matrix, &in_ones); // internal units and their area
             compute_square(matrix, &z, &ex_ones, &z_bg);
-		    marks = countUniqueMarkers(matrix); //кол-во внутренних нулей и внешних единиц
+            marks = countUniqueMarkers(matrix); // number of internal zeros and external ones
 		    pressures.push_back(pressure*100);
 		    derivatives.push_back(derivative);
 		    holes.push_back(marks.zero_marks.size()-1);
+            int o = (int)((marks.zero_marks.size())-((marks.un_marks.size())));
+            if(o < 0) o = 0;
+            holes_int.push_back(o);
             external_lands.push_back((marks.un_marks.size() - count));
 		    internal_lands.push_back(count);
 		    relationship.push_back(holes_num / (square));
@@ -108,6 +113,9 @@ extern "C"{
 		
 		result.holes_len = holes.size();
 		result.holes = new int[result.holes_len];
+
+        result.holes_int_len = holes_int.size();
+        result.holes_int = new int[result.holes_int_len];
 		
 		result.external_lands_len = external_lands.size();
 		result.external_lands = new int[result.external_lands_len];
@@ -136,6 +144,7 @@ extern "C"{
 			result.pressures[h] = pressures[h];
 			result.derivatives[h] = derivatives[h];
 			result.holes[h] = holes[h];
+            result.holes_int[h] = holes_int[h];
 			result.external_lands[h] = external_lands[h];
 			result.internal_lands[h] = internal_lands[h];
 			result.relationship[h] = relationship[h];

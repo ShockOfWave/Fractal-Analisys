@@ -12,6 +12,9 @@ struct Result {
 	int* holes;
 	size_t holes_len;
 	
+	int* holes_int;
+	size_t holes_int_len;
+	
 	int* external_lands;
 	size_t external_lands_len;
 	

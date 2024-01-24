@@ -9,6 +9,8 @@ class Result(ctypes.Structure):
         ("derivatives_len", ctypes.c_size_t),
         ("holes", ctypes.POINTER(ctypes.c_int)),
         ("holes_len", ctypes.c_size_t),
+        ("holes_int", ctypes.POINTER(ctypes.c_int)),
+        ("holes_int_len", ctypes.c_size_t),
         ("external_lands", ctypes.POINTER(ctypes.c_int)),
         ("external_lands_len", ctypes.c_size_t),
         ("internal_lands", ctypes.POINTER(ctypes.c_int)),
